@@ -1,8 +1,8 @@
 import React from "react";
-import rugContainer from "./components/rugContainer";
+import RugContainer from "./components/RugContainer";
 
 function App() {
-  return <rugContainer />;
+  return <RugContainer />;
 }
 
 export default App;
