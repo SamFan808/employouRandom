@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Container from "./Container";
-import Row from "./Row";
-import Col from "./Col";
-import Card from "./Card";
-import EmployeeDetail from "./EmployeeDetail";
-import API from "../utils/API";
+import Container from "../Container/Container";
+import Row from "../Row/Row";
+import Col from "../Col/Col";
+import Card from "../Card/Card";
+import EmployeeDetail from "../EmployeeDetail/EmployeeDetail";
+import API from "../../utils/API";
 
 function RugContainer() {
   const [employee, setEmployee] = useState({});
@@ -25,10 +25,20 @@ function RugContainer() {
   }
 
   return (
-    <EmployeeDetail
-      employeeName={employee.firstName + employee.lastName}
-      email={employee.email}
-    />
+    <div>
+      <Container>
+        <EmployeeDetail
+          employeeName={`${employee.firstName} ${employee.lastName}`}
+          email={employee.email}
+          birthday={employee.birthday}
+          phone={employee.phone}
+          address1={`${employee.streetNum} ${employee.street}`}
+          address2={`${employee.city}, ${employee.state} ${employee.postcode}`}
+          address3={`${employee.country}`}
+          image={employee.picture}
+        />
+      </Container>
+    </div>
   );
 }
 
