@@ -7,7 +7,7 @@ import EmployeeDetail from "../EmployeeDetail/EmployeeDetail";
 import API from "../../utils/API";
 
 function RugContainer() {
-  const [employee, setEmployee] = useState({});
+  const [employee, setEmployee] = useState([]);
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function RugContainer() {
     API.search()
       .then((employees) => {
         setEmployees(employees);
-        setEmployee(employees[1]);
+        setEmployee(employees[0]);
       })
 
       .catch((err) => console.log(err));
@@ -30,22 +30,23 @@ function RugContainer() {
       <table id="directory">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Birthday</th>
-            <th>Phone</th>
-            <th>Address</th>
+            <th> Name </th>
+            <th> Email </th>
+            <th> Birthday </th>
+            <th> Phone </th>
+            <th> Address</th>
           </tr>
         </thead>
         <tbody>
-          <EmployeeDetail
-            employeeName={`${employee.firstName} ${employee.lastName}`}
-            email={employee.email}
-            birthday={employee.birthday}
-            phone={employee.phone}
-            address1={`${employee.streetNum} ${employee.street} ${employee.city}, ${employee.state} ${employee.postcode}, ${employee.country}`}
-            // image={employee.picture}
-          />
+          {employees.map((employee) => (
+            <EmployeeDetail
+              employeeName={`${employee.firstName} ${employee.lastName}`}
+              email={employee.email}
+              birthday={employee.birthday}
+              phone={employee.phone}
+              address1={`${employee.streetNum} ${employee.street} ${employee.city}, ${employee.state} ${employee.postcode}, ${employee.country}`}
+            />
+          ))}
         </tbody>
       </table>
     </div>
