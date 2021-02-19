@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASEURL = "https://randomuser.me/api/?results=30";
+const BASEURL = "https://randomuser.me/api/?nat=us&results=100";
 
 export default {
   search: function () {
@@ -7,7 +7,7 @@ export default {
       const employees = res.data;
       return employees.results.map((employee) => {
         return {
-          id: employee.login.uuid.slice(0, 7),
+          id: employee.login.uuid,
           firstName: employee.name.first,
           lastName: employee.name.last,
           picture: employee.picture.large,

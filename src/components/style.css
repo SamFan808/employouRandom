@@ -13,5 +13,9 @@ th {
 
 tbody {
   color: darkgoldenrod;
-  padding-inline: 5px;
+  padding-inline: 3px;
+}
+
+.menu_links {
+  cursor: pointer;
 }

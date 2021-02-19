@@ -5,7 +5,7 @@ import "./style.css";
 
 function RugContainer() {
   const [employee, setEmployee] = useState([]);
-  const [employees, setEmployees] = useState([0]);
+  const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
     loadUsers();
@@ -21,30 +21,65 @@ function RugContainer() {
       .catch((err) => console.log(err));
   }
 
+  let sortName = function () {
+    setEmployee(
+      employees.sort((a, b) => {
+        if (a.firstName > b.firstName) {
+          return 1;
+        } else {
+          return -1;
+        }
+      })
+    );
+  };
+
+  let sortAddress = function () {
+    setEmployee(
+      employees.sort((a, b) => {
+        if (a.state > b.state) {
+          return 1;
+        } else {
+          return -1;
+        }
+      })
+    );
+  };
+  // setEmployee(employees.sort((a,b) => {
+  //   if a.firstName > b.firstName
+  //   return 1,
+  //   else -1
+  // }) look up on the interwebs also image, and
+  //  need a search for name, email,. etc...
+
   return (
     <div>
       <h2 id="title">Employee Directory</h2>
       <table id="directory">
         <thead>
           <tr>
-            <th> ID </th>
-            <th> Name </th>
+            <th></th>
+            <th onClick={() => sortName()} className="menu_links">
+              Name
+            </th>
             <th> Email </th>
             <th> Birthday </th>
             <th> Phone </th>
-            <th> Address</th>
+            <th onClick={() => sortAddress()} className="menu_links">
+              Address
+            </th>
           </tr>
         </thead>
         <tbody className="table">
           {employees.map((employee) => (
             <EmployeeDetail
-              id={employee.id}
+              key={employee.id}
               picture={employee.picture}
-              employeeName={`${employee.firstName}  ${employee.lastName}`}
+              employeeName={`${employee.firstName} ${employee.lastName}`}
               email={employee.email}
               birthday={employee.birthday}
               phone={employee.phone}
-              address1={`${employee.streetNum} ${employee.street} ${employee.city}, ${employee.state} ${employee.postcode}, ${employee.country}`}
+              address1={`${employee.streetNum} ${employee.street}`}
+              address2={`${employee.city}, ${employee.state} ${employee.postcode}`}
             />
           ))}
         </tbody>
