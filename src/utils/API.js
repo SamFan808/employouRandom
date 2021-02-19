@@ -7,7 +7,7 @@ export default {
       const employees = res.data;
       return employees.results.map((employee) => {
         return {
-          id: employee.id.value,
+          id: employee.login.uuid.slice(0, 7),
           firstName: employee.name.first,
           lastName: employee.name.last,
           picture: employee.picture.large,

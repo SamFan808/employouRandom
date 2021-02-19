@@ -1,5 +1,5 @@
 import React from "react";
-import RugContainer from "./components/RugContainer/RugContainer";
+import RugContainer from "./components/RugContainer";
 
 function App() {
   return <RugContainer />;

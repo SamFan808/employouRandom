@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Container from "../Container/Container";
-import Row from "../Row/Row";
-import Col from "../Col/Col";
-import Card from "../Card/Card";
-import EmployeeDetail from "../EmployeeDetail/EmployeeDetail";
-import API from "../../utils/API";
+import EmployeeDetail from "./EmployeeDetail";
+import API from "../utils/API";
+import "./style.css";
 
 function RugContainer() {
   const [employee, setEmployee] = useState([]);
-  const [employees, setEmployees] = useState([]);
+  const [employees, setEmployees] = useState([0]);
 
   useEffect(() => {
     loadUsers();
@@ -30,6 +27,7 @@ function RugContainer() {
       <table id="directory">
         <thead>
           <tr>
+            <th> ID </th>
             <th> Name </th>
             <th> Email </th>
             <th> Birthday </th>
@@ -37,10 +35,12 @@ function RugContainer() {
             <th> Address</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="table">
           {employees.map((employee) => (
             <EmployeeDetail
-              employeeName={`${employee.firstName} ${employee.lastName}`}
+              id={employee.id}
+              picture={employee.picture}
+              employeeName={`${employee.firstName}  ${employee.lastName}`}
               email={employee.email}
               birthday={employee.birthday}
               phone={employee.phone}
