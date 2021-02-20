@@ -1,25 +1,25 @@
 import axios from "axios";
-const BASEURL = "https://randomuser.me/api/?nat=us&results=100";
+const BASEURL = "https://randomuser.me/api/?nat=fr&results=100";
 
 export default {
   search: function () {
     return axios.get(BASEURL).then((res) => {
       const employees = res.data;
-      return employees.results.map((employee) => {
+      return employees.results.map((data) => {
         return {
-          id: employee.login.uuid,
-          firstName: employee.name.first,
-          lastName: employee.name.last,
-          picture: employee.picture.large,
-          email: employee.email,
-          streetNum: employee.location.street.number,
-          street: employee.location.street.name,
-          city: employee.location.city,
-          state: employee.location.state,
-          postcode: employee.location.postcode,
-          country: employee.location.country,
-          phone: employee.cell,
-          birthday: employee.dob.date.slice(0, 10),
+          id: data.login.uuid,
+          firstName: data.name.first,
+          lastName: data.name.last,
+          picture: data.picture.medium,
+          email: data.email,
+          streetNum: data.location.street.number,
+          street: data.location.street.name,
+          city: data.location.city,
+          state: data.location.state,
+          postcode: data.location.postcode,
+          country: data.location.country,
+          phone: data.cell,
+          birthday: data.dob.date.slice(0, 10),
         };
       });
     });

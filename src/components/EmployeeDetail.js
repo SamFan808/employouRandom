@@ -1,7 +1,6 @@
 import React from "react";
 
 function EmployeeDetail({
-  id,
   employeeName,
   email,
   birthday,
@@ -17,13 +16,13 @@ function EmployeeDetail({
       </td>
       <td>{employeeName}</td>
       <td>{email}</td>
-      <td>{birthday}</td>
-      <td>{phone}</td>
       <td>
         {address1}
         <br />
         {address2}
       </td>
+      <td>{birthday}</td>
+      <td>{phone}</td>
     </tr>
   );
 }

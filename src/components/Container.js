@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from "react";
 import EmployeeDetail from "./EmployeeDetail";
+import Search from "./Search";
 import API from "../utils/API";
 import "./style.css";
 
-function RugContainer() {
-  const [employee, setEmployee] = useState([]);
+function Container() {
   const [employees, setEmployees] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     loadUsers();
   }, []);
 
-  function loadUsers() {
+  let loadUsers = function () {
     API.search()
       .then((employees) => {
         setEmployees(employees);
-        setEmployee(employees[0]);
       })
 
       .catch((err) => console.log(err));
-  }
+  };
 
-  let sortName = function () {
-    setEmployee(
-      employees.sort((a, b) => {
+  const sortName = function () {
+    setEmployees(
+      [...employees].sort((a, b) => {
         if (a.firstName > b.firstName) {
           return 1;
         } else {
@@ -33,9 +33,9 @@ function RugContainer() {
     );
   };
 
-  let sortAddress = function () {
-    setEmployee(
-      employees.sort((a, b) => {
+  const sortAddress = function () {
+    setEmployees(
+      [...employees].sort((a, b) => {
         if (a.state > b.state) {
           return 1;
         } else {
@@ -44,28 +44,56 @@ function RugContainer() {
       })
     );
   };
-  // setEmployee(employees.sort((a,b) => {
-  //   if a.firstName > b.firstName
-  //   return 1,
-  //   else -1
-  // }) look up on the interwebs also image, and
-  //  need a search for name, email,. etc...
+
+  const sortPhone = function () {
+    setEmployees(
+      [...employees].sort((a, b) => {
+        if (a.phone > b.phone) {
+          return 1;
+        } else {
+          return -1;
+        }
+      })
+    );
+  };
+
+  const handleInputChange = (event) => {
+    let input = event.target.input;
+    const value = event.target.value;
+    setSearch({
+      [input]: value,
+    });
+    console.log("hello");
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    console.log("clicky clicky");
+  };
 
   return (
     <div>
       <h2 id="title">Employee Directory</h2>
+      <Search
+        className="search"
+        value={search.Search}
+        handleInputChange={search.handleInputChange}
+        handleFormSubmit={search.handleFormSubmit}
+      />
       <table id="directory">
-        <thead>
+        <thead className="head">
           <tr>
             <th></th>
             <th onClick={() => sortName()} className="menu_links">
               Name
             </th>
             <th> Email </th>
-            <th> Birthday </th>
-            <th> Phone </th>
             <th onClick={() => sortAddress()} className="menu_links">
               Address
+            </th>
+            <th> Birthday </th>
+            <th onClick={() => sortPhone()} className="menu_links">
+              Phone
             </th>
           </tr>
         </thead>
@@ -88,4 +116,4 @@ function RugContainer() {
   );
 }
 
-export default RugContainer;
+export default Container;
