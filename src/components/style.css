@@ -32,6 +32,6 @@ tr:nth-child(even) {
 }
 
 .form-control {
-  width: 50px;
+  width: 300px;
   color: pink;
 }

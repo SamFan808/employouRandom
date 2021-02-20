@@ -57,8 +57,6 @@ function Container() {
     );
   };
 
-  // includes something something value.toLowerCase = search.toLowerCase
-
   const handleInputChange = (event) => {
     setSearch(event.target.value);
     // event.preventDefault();
@@ -83,7 +81,6 @@ function Container() {
         className="search"
         search={search}
         handleInputChange={handleInputChange}
-        // handleFormSubmit={search.handleFormSubmit}
       />
       <table id="directory">
         <thead className="head">
