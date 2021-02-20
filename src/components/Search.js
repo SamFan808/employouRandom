@@ -1,14 +1,14 @@
 import React from "react";
 import "./style.css";
 
-function Search({ value, handleInputChange, handleFormSubmit }) {
+function Search({ search, handleInputChange }) {
   return (
     <form>
       <div className="form-group">
         <label htmlFor="search">Search</label>
         <input
           onChange={handleInputChange}
-          value={value}
+          value={search}
           name="search"
           type="text"
           className="form-control"
@@ -16,9 +16,9 @@ function Search({ value, handleInputChange, handleFormSubmit }) {
           id="search"
         />
         <br />
-        <button onClick={handleFormSubmit} className="btn btn-primary">
+        {/* <button onClick={handleFormSubmit} className="btn btn-primary">
           Search
-        </button>
+        </button> */}
       </div>
     </form>
   );

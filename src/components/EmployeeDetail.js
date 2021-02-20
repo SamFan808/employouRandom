@@ -12,7 +12,7 @@ function EmployeeDetail({
   return (
     <tr>
       <td>
-        <img src={picture}></img>
+        <img src={picture} alt={employeeName}></img>
       </td>
       <td>{employeeName}</td>
       <td>{email}</td>

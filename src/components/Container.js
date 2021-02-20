@@ -57,18 +57,23 @@ function Container() {
     );
   };
 
-  const handleInputChange = (event) => {
-    let input = event.target.input;
-    const value = event.target.value;
-    setSearch({
-      [input]: value,
-    });
-    console.log("hello");
-  };
+  // includes something something value.toLowerCase = search.toLowerCase
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    console.log("clicky clicky");
+  const handleInputChange = (event) => {
+    setSearch(event.target.value);
+    // event.preventDefault();
+    const result = employees.filter(
+      (employee) =>
+        employee.firstName
+          .toLowerCase()
+          .startsWith(event.target.value.toLowerCase()) ||
+        employee.lastName
+          .toLowerCase()
+          .startsWith(event.target.value.toLowerCase()) ||
+        employee.phone.startsWith(event.target.value) ||
+        employee.email.startsWith(event.target.value)
+    );
+    setEmployees(result);
   };
 
   return (
@@ -76,9 +81,9 @@ function Container() {
       <h2 id="title">Employee Directory</h2>
       <Search
         className="search"
-        value={search.Search}
-        handleInputChange={search.handleInputChange}
-        handleFormSubmit={search.handleFormSubmit}
+        search={search}
+        handleInputChange={handleInputChange}
+        // handleFormSubmit={search.handleFormSubmit}
       />
       <table id="directory">
         <thead className="head">
