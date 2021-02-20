@@ -6,7 +6,7 @@
 
 ## Description
 
-Application that allows a user to view the entire employee directory, with the ability to sort by name, address (city), and phone number by area code.
+Application that allows a user to view the entire employee directory, with the ability to sort by name, address (city), and phone number by area code by clicking on the header.
 
 ## Table of Contents
 
