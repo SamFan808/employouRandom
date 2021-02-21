@@ -59,7 +59,6 @@ function Container() {
 
   const handleInputChange = (event) => {
     setSearch(event.target.value);
-    // event.preventDefault();
     const result = employees.filter(
       (employee) =>
         employee.firstName
@@ -67,9 +66,7 @@ function Container() {
           .startsWith(event.target.value.toLowerCase()) ||
         employee.lastName
           .toLowerCase()
-          .startsWith(event.target.value.toLowerCase()) ||
-        employee.phone.startsWith(event.target.value) ||
-        employee.email.startsWith(event.target.value)
+          .startsWith(event.target.value.toLowerCase())
     );
     setEmployees(result);
   };
